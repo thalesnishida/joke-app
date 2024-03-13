@@ -10,7 +10,8 @@
         android:theme="@style/Theme.JokeApp.AppbarOverlay"
         android:layout_height="wrap_content">
 
-        <Toolbar
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:popupTheme="@style/Theme.JokeApp.PopuOverlay"
             android:layout_width="match_parent"
             android:background="?android:attr/colorPrimary"

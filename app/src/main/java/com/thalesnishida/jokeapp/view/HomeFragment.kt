@@ -1,5 +1,6 @@
 package com.thalesnishida.jokeapp.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -51,14 +52,13 @@ class HomeFragment: Fragment() {
         progress.visibility = View.VISIBLE
     }
 
-    fun showError(message: String){
-        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
-    }
+    fun showError(message: String) = Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
 
     fun hideProgress(){
         progress.visibility = View.GONE
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun showCategories(response: List<Category>){
         val categories = response.map{ CategoryItem(it)}
         adapter.addAll(categories)

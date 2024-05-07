@@ -12,17 +12,15 @@ class HomePresenter(private val view: HomeFragment) {
         fakeRequest()
     }
 
-    fun onComplete(){
-        view.hideProgress()
-    }
-    fun onSuccess(categoreis: List<String>){
-        val response = categoreis.map { Category(it, 0xFFFF0000) }
+    private fun onComplete() = view.hideProgress()
+
+    private fun onSuccess(categories: List<String>){
+        val response = categories.map { Category(it, 0xFFFF0000) }
         view.showCategories(response)
     }
 
-    fun onFailure(message: String){
-        view.showError(message)
-    }
+    fun onFailure(message: String) = view.showError(message)
+
     private fun fakeRequest(){
         Handler(Looper.getMainLooper()).postDelayed({
           val categories = arrayListOf<String>(
@@ -31,9 +29,9 @@ class HomePresenter(private val view: HomeFragment) {
               "Categoria 3"
           )
 
-          // onSuccess(categories)
+          onSuccess(categories)
 
-          onFailure("Algo deu errado. Tente novamenta mais tarde!")
+          // onFailure("Algo deu errado. Tente novamenta mais tarde!")
           onComplete()
         }, 2000)
     }
